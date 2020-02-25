@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="root">
+		<p>{{id}}</p>
+		<p>{{msg}}----{{text}}</p>
+		<p v-html='htmlStr'></p>
+		<p v-text='text'></p>
+		<input type="text" v-model='person.info.name'> 
+		<span>{{person.info.name}}</span>
+		<button v-on:click='handleClick'>按钮(测试v-on)</button>
+		<button @click='handleClick'>按钮(测试@)</button> <br/><br/>
+		<img v-bind:src='src' style="width: 400px; height: 300px;"/>
+	</div>
+
+	<script src="./Observer.js"></script>
+	<script src="./Compile.js"></script>
+	<script src="./MVVM.js"></script>
+	<script>
+		let vm = new MVVM({
+			el: '#root',
+			data: {
+				id: 1,
+				msg: '学习MVVM原理',
+				htmlStr: '<span style="color: red;">v-html指令测试</span>',
+				text: 'v-text指令',
+				src: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1582543338515&di=7994bb8333d0ce2ee9f488725eb89e60&imgtype=0&src=http%3A%2F%2Fa3.att.hudong.com%2F14%2F75%2F01300000164186121366756803686.jpg',
+				person: {
+					info: {
+						age: 23,
+						name: '小明'
+					}
+				}
+			},
+			methods: {
+				handleClick() {
+					this.id++
+				}
+			},
+		})
+	</script>
+</body>
+</html>
